@@ -10,7 +10,7 @@ You need to add the libaries and images yourself.
 - http
 - wikijs
 - cleverbot.io
-- 
+
 
 ##License:
 The MIT License (MIT)
