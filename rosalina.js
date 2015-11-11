@@ -9,7 +9,7 @@ var Wiki = require('wikijs');
 var wiki = new Wiki();
 var bot = new Discord.Client();
 var cleverbot = require("./lib/cleverbot.io");
-var clever = new cleverbot('API','API');
+var clever = new cleverbot('API USER','API KEY/PASS');
 
 var logger = new (winston.Logger)({
     transports: [
@@ -35,6 +35,9 @@ var rosaStatus = 1;
 var greetOn = 1;
 var goodbyeOn = 1;
 var commandCount = [];
+var cleverStatus = 1;
+var cleverUsage = 0;
+var lastCommandUsed = "";
 
 function xmlToJson(url, callback) {
     var req = http.get(url, function (res) {
@@ -64,7 +67,7 @@ function xmlToJson(url, callback) {
 bot.on("message", function(message) {
     var stringTest = S(message.content.toLowerCase())
     var badWords = stringTest.contains("vulgar language") || stringTest.contains("nigger") || stringTest.contains("nig-nog") || stringTest.contains("nignog") || stringTest.contains("niglet") || stringTest.contains("night club bomber") || stringTest.contains("allahu akbar") || stringTest.contains("fuck you")|| stringTest.contains("kill your self") || stringTest.contains("nigga");
-    var greetings = message.content === "hi" || stringTest.contains("hello") || stringTest.contains("greetings") || stringTest.contains("good evening") || stringTest.contains("good morning") || stringTest.contains("good afternoon") || message.content ==="morning"|| message.content ==="afternoon"|| message.content ==="evening";
+    var greetings = message.content === "hi" || stringTest.contains("Mornin'") || stringTest.contains("hello") || stringTest.contains("greetings") || stringTest.contains("good evening") || stringTest.contains("good morning") || stringTest.contains("good afternoon") || message.content ==="morning"|| message.content ==="afternoon"|| message.content ==="evening"|| message.content ==="hola" || message.content ==="hola.";
     var goodByes = stringTest.contains("goodbye") || stringTest.contains("getting off") || stringTest.contains("cya") || stringTest.contains("gotta go") || stringTest.contains("heading off") || stringTest.contains("bye");
     var commandList = ["``!info``","``!help``", "``!commands``", "``!greet off``", "``!greet on``", "``!farewell off``", "``!farewell on``", "``just do it!``", "``!coin``", "``!wat``", "``!roll xd4``", "``!roll xd6``", "``!roll xd8``", "``!roll xd10``", "``!roll xd12``", "``!roll xd20``", "``!roll xd100``", "``success!``", "``r.i.p``", "``rest in peace``", "``!horrible``", "``cake``", "``\\o/``", "``\\o``", "``o/``", "``!id``", "``!avatar``", "``!game #``", "``!on``", "``!off``", "``!uptime``", "``!getavatar @mention``", "``!channelid``", "``!serverid``", "``!members``", "``!imgur(not implemented)``"];
     var mentionRosa = "<@111424758314213376>";
@@ -97,8 +100,14 @@ bot.on("message", function(message) {
 
         if (message.content === mentionRosa + " !info" && rosaStatus !== 0) {
             bot.reply(message, "```Bot created by: Lord Ptolemy \n Contact Info: \n - Steam: <http://steamcommunity.com/id/Actowolfy> \n - DiscordID: 102529479179509760  \n Current Version: 0.0.1 \n Libraries: Discord.js, Winston, String.js, d20, & xml2js \n TODO: Implement groups to prevent abuse of certain commands.```");
+            return lastCommandUsed = "!info";
         } else {
 
+        }
+
+        if (message.content === "!lastCommand") {
+            bot.reply(message, "Last command used: " + lastCommandUsed);
+            return lastCommandUsed = "!lastCommand";
         }
 
         if (stringTest.contains("shipping") || stringTest.contains("loli") || stringTest.contains("box")) {
@@ -109,6 +118,10 @@ bot.on("message", function(message) {
                 bot.sendFile(message, "images/loliinabox.jpg", "loliinabox.jpg");
                 bot.reply(message, "Loli in a box. Shipping starts in 2016");
             }
+        }
+
+        if (message.content === "!cleverStatus") {
+            bot.reply(message, "\n" + "cleverStatus is set to: ``" + cleverStatus + "``\n" + "!clever has been called: ``" + cleverUsage + "`` times.");
         }
 
 
@@ -160,7 +173,7 @@ bot.on("message", function(message) {
 
         if (stringTest.contains("just do it!") && rosaStatus !== 0) {
             var memberId = message.sender.id;
-            if (memberId = rosaId) {
+            if (memberId === rosaId) {
 
             } else {
                 bot.sendMessage(message, "https://www.youtube.com/watch?v=ZXsQAXx_ao0");
@@ -204,8 +217,8 @@ bot.on("message", function(message) {
         } else {
 
         } */
-
-        function buildAvatar(id, id2) {
+/*
+        function buildAvatar(id, id2) { //Thanks Sorch
             if (id2 === null) {
                 return null;
             } else {
@@ -213,34 +226,66 @@ bot.on("message", function(message) {
             }
         }
 
-        if( stringTest.contains(mentionRosa + " !getavatar") && rosaStatus !== 0 ){
-            logger.log("error", " PASSED! 1");
+        if( stringTest.contains(mentionRosa + " !getavatar") && rosaStatus !== 0 ) { //Thanks Sorch
+            bot.reply(message, "\n Mentions: " + "``" +message.mentions + "``" + "\n Mention length: " + "``" +message.mentions.length + "``");
 
-            var idOfAvatar = message.content.substring(35,53); // 54
-            logger.log("error", idOfAvatar + " PASSED! 2");
+            if (message.mentions.length === 2) {
+                var idOfAvatar = message.content.substring(35, 53); // 54
 
-            var usersAvatar = "";
-            for (i = 0; i < bot.servers.length; i++)
-            {
-                var avUser = bot.servers[i].getMember(idOfAvatar);
-                if (avUser.id.toString() == idOfAvatar){
-                    usersAvatar = avUser.avatarURL;
-                    if (usersAvatar.length > 0) break;
+                var usersAvatar = "";
+                for (i = 0; i < bot.servers.length; i++) {
+                    var avUser = bot.servers[i].getMember(idOfAvatar);
+                    if (avUser.id.toString() == idOfAvatar) {
+                        usersAvatar = avUser.avatarURL;
+                        if (usersAvatar.length > 0) break;
+                    }
                 }
-            }
-            logger.log("error", avatar, usersAvatar.length, usersAvatar + " PASSED! 3");
 
-            if(bot.getUser("id", idOfAvatar) != null){ // user has an avatar
-                var avatar = buildAvatar(idOfAvatar, bot.getUser("id", idOfAvatar).avatar);
-                if (avatar === null) {
-                    bot.sendMessage(message, "This person doesn't have an avatar! :(");
-                } else {
-                    bot.sendMessage(message, "this person's avatar can be found at " + avatar);
+                if (bot.getUser("id", idOfAvatar) != null) { // user has an avatar
+                    var avatar = buildAvatar(idOfAvatar, bot.getUser("id", idOfAvatar).avatar);
+                    if (avatar === null) {
+                        bot.sendMessage(message, "This person doesn't have an avatar or it's default! :(");
+                    } else {
+                        bot.sendMessage(message, "this person's avatar can be found at " + avatar);
+                    }
                 }
-            } else { // user doesn't have an avatar
-                bot.reply(message, "this person doesn't have an avatar! :(" + usersAvatar + idOfAvatar);
+            } else if (messsage.content === mentionRosa + " !getavatar"){
+                var usersAvatar = message.sender.avatarURL;
+
+                if (usersAvatar) { // user has an avatar
+                    bot.reply(message, "your avatar can be found at " + usersAvatar);
+                } else { // user doesn't have an avatar
+                    bot.reply(message, "you don't have an avatar!");
+                }
+            }else if (stringTest.contains(mentionRosa + " !getavatar " + mentionRosa)) {
+                bot.reply(message, "My avatar can be found at ")
+            } else {
+                bot.reply(message, "Please don't break me :(");
             }
         }
+        */
+
+        if (stringTest.contains(mentionRosa + " !getavatar")) {
+            if (stringTest.contains(mentionRosa + " !getavatar " + mentionRosa)) {
+                var rosaAvatar = message.mentions[0].avatarURL;
+                bot.reply(message, "My avatar can be found here " +rosaAvatar);
+            } else if (message.mentions.length === 2) {
+                var userAvatarLoc = message.mentions[1].avatarURL;
+                bot.reply(message,"Avatar is at: " + userAvatarLoc);
+            } else if (message.mentions.length === 1) {
+                var sendersAvatar = message.sender.avatarURL;
+
+                if (sendersAvatar) { // user has an avatar
+                    bot.reply(message, "your avatar can be found at " + sendersAvatar);
+                } else { // user doesn't have an avatar
+                    bot.reply(message, "you don't have an avatar!");
+                }
+            } else {
+                bot.reply(message, "Too many mentions. Please don't break me. :(");
+            }
+        }
+
+
 
         if (badWords) {
             var memberId = message.sender.id;
@@ -373,7 +418,7 @@ bot.on("message", function(message) {
 
         }
 
-        if (stringTest.contains("\\o/") && rosaStatus !== 0 && greetOn === 1 || stringTest.contains("o/") && rosaStatus !== 0 && greetOn === 1 || stringTest.contains("\\o") && rosaStatus !== 0 && greetOn === 1) {
+        if (stringTest.contains("\\o/") && rosaStatus !== 0 && greetOn === 1 || stringTest.contains("o/") && rosaStatus !== 0 && greetOn === 1 && !stringTest.contains("/o/") || stringTest.contains("\\o") && rosaStatus !== 0 && greetOn === 1 && !stringTest.contains("\\o\\")) {
             var memberId = message.sender.id;
             if (memberId === rosaId) {
 
@@ -420,6 +465,7 @@ bot.on("message", function(message) {
                 bot.reply(message, "Turning on.");
                 bot.setStatusOnline();
                 return rosaStatus = 1;
+                return lastCommandUsed = "!on";
             }
         } else {
 
@@ -473,19 +519,21 @@ bot.on("message", function(message) {
         } else {
 
         }
-        var cleverStatus = 1;
+
         if (stringTest.contains(mentionRosa + " !clever") && rosaStatus !== 0 && cleverStatus !== 0) {
             logger.log("error", "function called! ");
 
             var userMessage = message.content.substring(33);
+            bot.reply(message, "Message to send is: " + userMessage)
             clever.create(function (err, session) {
                 // session is your session name, it will either be as you set it previously, or cleverbot.io will generate one for you
 
                 // Woo, you initialized cleverbot.io.  Insert further code here
                 clever.ask(userMessage, function (err, response) {
-                    if (S(response.toLowerCase()).contains("error") || S(response.toLowerCase()).contains("error") || err) {
+                    if (err === true) {
                         logger.log("error", "Response was null" + response);
-                        bot.reply(message, "Response from api was null. Disabling Clever commands.");
+                        bot.reply(message, " \n Response: " + response + "\n Error: " + err);
+                        //bot.reply(message, "Response from api was null. Disabling Clever commands.");
                         return cleverStatus = 0;
                     } else {
                         logger.log("error", "Response from api:  " + response);
@@ -495,7 +543,7 @@ bot.on("message", function(message) {
                 });
             });
         }
-        var cleverUsage = 0;
+
         if (cleverUsage === 999) {
             bot.reply(message, "Cleverbot api limit has been reached. Cleverbot commands have been disabled.");
             return cleverStatus = 0;
@@ -504,7 +552,7 @@ bot.on("message", function(message) {
         }
 
         if (stringTest.contains(mentionRosa + " !clever") && rosaStatus !== 0 && cleverStatus !== 1) {
-            bot.reply(message, "Cleverbot api limit has been reached. Cleverbot commands have been disabled.");
+            bot.reply(message, "Cleverbot api limit has been reached or has sent back a null response. Cleverbot commands have been disabled.");
         } else {
 
         }
@@ -656,4 +704,4 @@ bot.on("raw", function(data) {
 });
 */
 
-bot.login("EMAIL", "Password");
+bot.login("EMAIL", "PASSWORD");
