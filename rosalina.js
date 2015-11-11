@@ -303,9 +303,8 @@ bot.on("message", function(message) {
 
         }
 
-        if (stringTest.contains(mentionRosa + " !getid") && rosaStatus !== 0) {
-            var memberId = message.content.substring(31,49); // 54
-            bot.reply(message, "This member's id is: " + memberId);
+        if (stringTest.contains(mentionRosa + " !getid") && message.mentions.length==2 && rosaStatus !== 0) {
+                bot.reply(message, "This member's id is: " + message.mentions[1].id);
         } else {
 
         }
