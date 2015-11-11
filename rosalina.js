@@ -9,7 +9,7 @@ var Wiki = require('wikijs');
 var wiki = new Wiki();
 var bot = new Discord.Client();
 var cleverbot = require("./lib/cleverbot.io");
-var clever = new cleverbot('API KEY','API PASS');
+var clever = new cleverbot('','');
 
 var logger = new (winston.Logger)({
     transports: [
@@ -34,6 +34,7 @@ var logger = new (winston.Logger)({
 var rosaStatus = 1;
 var greetOn = 1;
 var goodbyeOn = 1;
+var commandCount = [];
 
 function xmlToJson(url, callback) {
     var req = http.get(url, function (res) {
@@ -63,13 +64,20 @@ function xmlToJson(url, callback) {
 bot.on("message", function(message) {
     var stringTest = S(message.content.toLowerCase())
     var badWords = stringTest.contains("vulgar language") || stringTest.contains("nigger") || stringTest.contains("nig-nog") || stringTest.contains("nignog") || stringTest.contains("niglet") || stringTest.contains("night club bomber") || stringTest.contains("allahu akbar") || stringTest.contains("fuck you");
-    var greetings = stringTest.contains("hello") || stringTest.contains("greetings") || stringTest.contains("evening") || stringTest.contains("morning") || stringTest.contains("afternoon");
+    var greetings = message.content === "hi" || stringTest.contains("hello") || stringTest.contains("greetings") || stringTest.contains("good evening") || stringTest.contains("good morning") || stringTest.contains("good afternoon");
     var goodByes = stringTest.contains("goodbye") || stringTest.contains("getting off") || stringTest.contains("cya") || stringTest.contains("gotta go") || stringTest.contains("heading off") || stringTest.contains("bye");
-    var commandList = ["``!info``","``!help``", "``!commands``", "!greet off", "!greet on", "farewell off", "farewell on", "just do it!", "``!coin``", "``!roll xd4``", "``!roll xd6``", "``!roll xd8``", "``!roll xd10``", "``!roll xd12``", "``!roll xd20``", "``!roll xd100``", "``success!``", "``r.i.p``", "``rest in peace``", "``!horrible``", "``cake``", "``\\o/``", "``\\o``", "``o/``", "``!id``", "``!avatar``", "``!game #``", "``!on``", "``!off``", "``!uptime``", "``!getavatar @mention (broken)``", "``!channelid``", "``!serverid``", "``!members``", "``!imgur(not implemented)``"];
+    var commandList = ["``!info``","``!help``", "``!commands``", "``!greet off``", "``!greet on``", "``!farewell off``", "``!farewell on``", "``just do it!``", "``!coin``", "``!wat``", "``!roll xd4``", "``!roll xd6``", "``!roll xd8``", "``!roll xd10``", "``!roll xd12``", "``!roll xd20``", "``!roll xd100``", "``success!``", "``r.i.p``", "``rest in peace``", "``!horrible``", "``cake``", "``\\o/``", "``\\o``", "``o/``", "``!id``", "``!avatar``", "``!game #``", "``!on``", "``!off``", "``!uptime``", "``!getavatar @mention (broken)``", "``!channelid``", "``!serverid``", "``!members``", "``!imgur(not implemented)``"];
     var mentionRosa = "<@111424758314213376>";
     var rosaId = "111424758314213376";
-
-    if (message.channel.id === "102588320181125120" || message.channel.id === "95657260969103360" || message.channel.id === "103028520011190272" || message.sender.id === "102529479179509760") {
+    //var botBlackList = "";
+    //var userBlackList = "";
+    //var roleBlackList = message.sender.roles[];
+    ///var serverWhitelist = [];
+    //var channelWhitelist = message.channel.id === "102588320181125120" || message.channel.id === "112185703961534464" || message.channel.id === "94831883505905664" || message.channel.id === "81402706320699392" || message.channel.id === "110374132432011264" || message.channel.id === "113477047145238528" || message.channel.id === "95657260969103360" || message.channel.id === "103028520011190272" ;
+    //var userWhitelist = message.sender.id === "102529479179509760" || message.sender.id === " 102528327251656704";
+    var channelWhitelist = ["102588320181125120","112185703961534464","94831883505905664","81402706320699392","110374132432011264","113477047145238528","95657260969103360","103028520011190272"]
+    var userWhitelist = ["102529479179509760","102528327251656704"]
+    if (channelWhitelist.indexOf(message.channel.id) !== -1 || userWhitelist.indexOf(message.sender.id) !== -1) {
 
 
 
@@ -95,13 +103,24 @@ bot.on("message", function(message) {
 
         }
 
+        if (stringTest.contains("!wat") && rosaStatus !== 0 ) {
+            var memberId = message.sender.id;
+            if (memberId === rosaId) {
+
+            } else {
+                bot.sendMessage(message, " https://www.youtube.com/watch?v=2ZPfgVSrPVY");
+            }
+        } else {
+
+        }
+
         if (stringTest.contains(mentionRosa + " !serverid")) {
             bot.reply(message, "The server id is: " + "``" +message.channel.server.id + "``");
         } else {
 
         }
 
-        if (stringTest.contains("r.i.p") && rosaStatus !== 0 || stringTest.contains("rest in peace") && rosaStatus !== 0) {
+        if (stringTest.contains("r.i.p") && rosaStatus !== 0 || stringTest.contains("rest in peace") && rosaStatus !== 0 || message.content === "rip" && rosaStatus !== 0) {
             var memberId = message.sender.id;
             if (memberId === rosaId) {
 
@@ -109,6 +128,12 @@ bot.on("message", function(message) {
                 var randomRIP = Math.floor((Math.random() * 4) + 1);
                 bot.sendFile(message, "images/rip/rip" + randomRIP + ".png", "rip" + randomRIP + ".png");
             }
+        } else {
+
+        }
+
+        if (stringTest.contains(mentionRosa + " i like your") && rosaStatus !== 0 || stringTest.contains(mentionRosa + " i like that you") && rosaStatus !== 0 || message.content === mentionRosa + " i like you" && rosaStatus !== 0 || stringTest.contains(mentionRosa + " i love your") && rosaStatus !== 0 || stringTest.contains(mentionRosa + " i love that you") && rosaStatus !== 0) {
+            bot.reply(message, "Thanks!");
         } else {
 
         }
@@ -157,36 +182,61 @@ bot.on("message", function(message) {
 
         }
 
-        /*
-         if( stringTest.contains(mentionRosa + " !getavatar") && rosaStatus !== 0 ){
-         logger.log("error", " PASSED! 1");
+        if( stringTest.contains(mentionRosa + " !avatar") && rosaStatus !== 0 ) {
+            logger.log("error", " PASSED! 1");
 
-         var idOfAvatar = message.content.substring(35,53); // 54
-         logger.log("error", idOfAvatar + " PASSED! 2");
+            if (message.mentions.length > 1) {
+                var otherUsersAvatar = 'https://discordapp.com/api/users/'+message.sender.id+'/avatars/'+bot.getUser("id", message.sender.id).avatar+'.jpg';
+                logger.log("error", otherUsersAvatar + " PASSED! 3");
 
-         var usersAvatar = idOfAvatar.avatarURL;
-         logger.log("error", usersAvatar + " PASSED! 3");
-
-         if(usersAvatar){ // user has an avatar
-         bot.sendMessage(message, "this person's avatar can be found at " + usersAvatar);
-         }else { // user doesn't have an avatar
-         bot.reply(message, "this person doesn't have an avatar!");
-         }
-         }
-         */
-
-        if (message.content === mentionRosa + " !avatar" && rosaStatus !== 0) {
-
-            var usersAvatar = message.sender.avatarURL;
-            logger.log("error", usersAvatar + " PASSED! vanilla");
-
-            if (usersAvatar) { // user has an avatar
-                bot.reply(message, "your avatar can be found at " + usersAvatar);
-            } else { // user doesn't have an avatar
-                bot.reply(message, "you don't have an avatar!");
+                if (otherUsersAvatar) { // user has an avatar
+                    bot.sendMessage(message, "this person's avatar can be found at " + otherUsersAvatar);
+                } else { // user doesn't have an avatar
+                    bot.reply(message, "this person doesn't have an avatar! " + " usersAvatar: " + otherUsersAvatar);
+                }
+            } else {
+                bot.reply(message, "Who am I getting an avatar for?");
             }
         } else {
 
+        }
+
+            /*else {
+                var usersAvatar = message.sender.avatarURL;
+                logger.log("error", usersAvatar + " PASSED! vanilla");
+
+                if (usersAvatar) { // user has an avatar
+                    bot.reply(message, "your avatar can be found at " + usersAvatar);
+                } else { // user doesn't have an avatar
+                    bot.reply(message, "you don't have an avatar!");
+                }
+            }
+        } else {
+
+        } */
+
+        if( stringTest.contains(mentionRosa + " !getavatar") && rosaStatus !== 0 ){
+            logger.log("error", " PASSED! 1");
+
+            var idOfAvatar = message.content.substring(35,53); // 54
+            logger.log("error", idOfAvatar + " PASSED! 2");
+
+            var usersAvatar = "";
+            for (i = 0; i < bot.servers.length; i++)
+            {
+                var avUser = bot.servers[i].getMember(idOfAvatar);
+                if (avUser.id == idOfAvatar){
+                    usersAvatar = avUser.avatarURL;
+                    if (usersAvatar.length > 0) break;
+                }
+            }
+            logger.log("error", usersAvatar + " PASSED! 3");
+
+            if(usersAvatar.length > 0){ // user has an avatar
+                bot.sendMessage(message, "this person's avatar can be found at " + usersAvatar);
+            } else { // user doesn't have an avatar
+                bot.reply(message, "this person doesn't have an avatar!" + usersAvatar + idOfAvatar);
+            }
         }
 
         if (badWords) {
@@ -201,6 +251,13 @@ bot.on("message", function(message) {
         if (message.content === mentionRosa + " !id" && rosaStatus !== 0) {
             var memberId = message.sender.id;
             bot.reply(message, "Your member id is " + memberId);
+        } else {
+
+        }
+
+        if (stringTest.contains(mentionRosa + " !getid") && rosaStatus !== 0) {
+            var memberId = message.content.substring(31,49); // 54
+            bot.reply(message, "This member's id is: " + memberId);
         } else {
 
         }
@@ -423,7 +480,7 @@ bot.on("message", function(message) {
 
                 // Woo, you initialized cleverbot.io.  Insert further code here
                 clever.ask(userMessage, function (err, response) {
-                    if (S(response.toLowerCase()).contains("Error, the reference")) {
+                    if (S(response.toLowerCase()).contains("error") || S(response.toLowerCase()).contains("error") || err) {
                         logger.log("error", "Response was null" + response);
                         bot.reply(message, "Response from api was null. Disabling Clever commands.");
                         return cleverStatus = 0;
@@ -519,10 +576,19 @@ bot.on("message", function(message) {
         // http://steamcommunity.com/id/Actowolfy/?xml=1
         // http://steamcommunity.com/profiles/76561198012320511?xml=1
         if (stringTest.contains("steamcommunity.com/profiles/") && rosaStatus !== 0 || stringTest.contains("steamcommunity.com/id/") && rosaStatus !== 0) {
+            var test = message.content;
+            var regexp = new RegExp("(steamcommunity.com)(/id/[a-z]+|(/profiles/(\d)+))", "i");
+            var out = test.match(regexp)[0];
+
             var memberId = message.sender.id;
             if (memberId === rosaId) {
 
             } else {
+                bot.reply(message, "Correct? " + out);
+            }
+        }
+
+            /*else {
                 var url = message.content + "?xml=1";
                 logger.log("error", "Steam url  " + url);
 
@@ -542,6 +608,7 @@ bot.on("message", function(message) {
                 });
             }
         }
+        */
         /*
          if (stringTest.contains(mentionRosa + " !abc us")) {
          var memberId = message.sender.id;
@@ -571,12 +638,19 @@ bot.on("message", function(message) {
     }
 } );
 
+/*
 
+bot.on("debug", function(msg) {
+    logger.log("error", msg);
+});
 
-/*bot.on("serverNewMember", function(user){
+bot.on("unknown", function(data) {
+    logger.log("error", data);
+});
 
-    bot.sendMessage()
+bot.on("raw", function(data) {
 
-} ); */
+});
+*/
 
-bot.login("email", "pass");
+bot.login("", "");
