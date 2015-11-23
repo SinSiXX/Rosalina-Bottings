@@ -1,0 +1,40 @@
+{
+  "name": "rosalina-bottings",
+  "version": "0.5.0",
+  "description": "Discord chat bot written in node.js",
+  "main": "Rosalina Bottings/rosalina.js",
+  "dependencies": {
+    "cheerio": "^0.19.0",
+    "cleverbot.io": "^1.0.4",
+    "d20": "^1.4.0",
+    "discord.js": "^5.0.1",
+    "electrolyte": "^0.2.0",
+    "github-api": "^0.10.7",
+    "http": "0.0.0",
+    "jimp": "^0.2.19",
+    "osu-api": "0.0.3",
+    "pngjs2": "^2.0.0",
+    "shuffle-seed": "^1.1.5",
+    "string": "^3.3.1",
+    "validator": "^4.3.0",
+    "wikijs": "^0.1.1",
+    "winston": "^2.1.1",
+    "xml2js": "^0.4.15"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/actowolfy/Rosalina-Bottings.git"
+  },
+  "keywords": [
+    "rosalina",
+    "bottings",
+    "actowolfy"
+  ],
+  "author": "actowolfy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/actowolfy/Rosalina-Bottings/issues"
+  },
+  "homepage": "https://github.com/actowolfy/Rosalina-Bottings#readme"
+}
