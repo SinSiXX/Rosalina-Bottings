@@ -1,0 +1,80 @@
+{
+  "_args": [
+    [
+      "youtube-crawler",
+      "C:\\Users\\Berwyn"
+    ]
+  ],
+  "_from": "youtube-crawler@*",
+  "_id": "youtube-crawler@0.0.2",
+  "_inCache": true,
+  "_location": "/youtube-crawler",
+  "_nodeVersion": "3.0.0",
+  "_npmUser": {
+    "email": "96aa48@gmail.com",
+    "name": "96aa48"
+  },
+  "_npmVersion": "3.3.8",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "youtube-crawler",
+    "raw": "youtube-crawler",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "*",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/youtube-crawler/-/youtube-crawler-0.0.2.tgz",
+  "_shasum": "57710366f255c6cff11293601e5ef03e4cb52148",
+  "_shrinkwrap": null,
+  "_spec": "youtube-crawler",
+  "_where": "C:\\Users\\Berwyn",
+  "author": {
+    "name": "Bram van der Veen"
+  },
+  "bugs": {
+    "url": "https://github.com/96AA48/node-youtube-crawler/issues"
+  },
+  "dependencies": {
+    "cheerio": "^0.19.0"
+  },
+  "description": "Another youtube crawler, no API key needed",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "57710366f255c6cff11293601e5ef03e4cb52148",
+    "tarball": "http://registry.npmjs.org/youtube-crawler/-/youtube-crawler-0.0.2.tgz"
+  },
+  "gitHead": "22f9cc20b164856a9a1ccacd9a685d81804645d6",
+  "homepage": "https://github.com/96AA48/node-youtube-crawler#readme",
+  "installable": true,
+  "keywords": [
+    "api",
+    "crawler",
+    "list",
+    "songs",
+    "videos",
+    "youtube"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "name": "96aa48",
+      "email": "96aa48@gmail.com"
+    }
+  ],
+  "name": "youtube-crawler",
+  "optionalDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/96AA48/node-youtube-crawler.git"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "version": "0.0.2"
+}
