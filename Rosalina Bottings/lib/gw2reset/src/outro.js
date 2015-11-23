@@ -1,0 +1,2 @@
+return gw2reset;
+}());
