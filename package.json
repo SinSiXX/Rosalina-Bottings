@@ -7,7 +7,7 @@
     "cheerio": "^0.19.0",
     "cleverbot.io": "^1.0.4",
     "d20": "^1.4.0",
-    "discord.js": "^5.0.1",
+    "discord.js": "^4.1.1",
     "electrolyte": "^0.2.0",
     "github-api": "^0.10.7",
     "http": "0.0.0",
@@ -29,7 +29,9 @@
   "keywords": [
     "rosalina",
     "bottings",
-    "actowolfy"
+    "actowolfy",
+    "discord",
+    "bot"
   ],
   "author": "actowolfy",
   "license": "MIT",
