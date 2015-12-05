@@ -1,4 +1,7 @@
-You need to add the libaries and images yourself.
+[![Build Status](https://travis-ci.org/actowolfy/Rosalina-Bottings.svg)](https://travis-ci.org/actowolfy/Rosalina-Bottings)
+
+#Contributing:
+By contributing to this repository (https://github.com/actowolfy/Rosalina-Bottings) be aware that you're agreeing to license your contribution(s) under the MIT License and give full rights to the owner & maintainer of the repository. 
 
 ##Libaries used:
 
