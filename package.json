@@ -4,10 +4,11 @@
   "description": "Discord chat bot written in node.js",
   "main": "Rosalina Bottings/rosalina.js",
   "dependencies": {
-    "cheerio": "^0.19.0",
     "cleverbot.io": "^1.0.4",
+    "cheerio": "^0.19.0",
     "d20": "^1.4.0",
-    "discord.js": "^4.1.1",
+    "delayed": "^1.4.23",
+    "discord.js": "4.1.1",
     "electrolyte": "^0.2.0",
     "github-api": "^0.10.7",
     "http": "0.0.0",
@@ -19,7 +20,16 @@
     "validator": "^4.3.0",
     "wikijs": "^0.1.1",
     "winston": "^2.1.1",
-    "xml2js": "^0.4.15"
+    "xml2js": "^0.4.15",
+    "youtube-crawler": "^3.3.8",
+    "request": "^2.14.3",
+    "mysql": "^1.4.28",
+    "league-api": "^1.0.2",
+    "image-scramble": "^2.5.1",
+    "gw2spidy": "^2.1.7",
+    "gw2reset": "^1.4.28",
+    "gw2api": "^2.11.0",
+    "gm": "^2.11.3"
   },
   "devDependencies": {},
   "repository": {

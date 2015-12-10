@@ -1,0 +1,102 @@
+{
+  "_args": [
+    [
+      "pinkvisual",
+      "C:\\Users\\Berwyn"
+    ]
+  ],
+  "_from": "pinkvisual@*",
+  "_id": "pinkvisual@0.3.2",
+  "_inCache": true,
+  "_location": "/pinkvisual",
+  "_nodeVersion": "2.3.2",
+  "_npmUser": {
+    "email": "ruben.cordeiro.eng@gmail.com",
+    "name": "rubencordeiro"
+  },
+  "_npmVersion": "2.11.3",
+  "_phantomChildren": {
+    "boom": "2.10.1",
+    "chalk": "1.1.1",
+    "commander": "2.9.0",
+    "core-util-is": "1.0.1",
+    "cryptiles": "2.0.5",
+    "forever-agent": "0.6.1",
+    "hoek": "2.16.3",
+    "http-signature": "0.11.0",
+    "inherits": "2.0.1",
+    "is-my-json-valid": "2.12.3",
+    "isarray": "0.0.1",
+    "isstream": "0.1.2",
+    "json-stringify-safe": "5.0.1",
+    "mime-types": "2.0.14",
+    "node-uuid": "1.4.3",
+    "oauth-sign": "0.8.0",
+    "sntp": "1.0.9",
+    "string_decoder": "0.10.31",
+    "stringstream": "0.0.5",
+    "tough-cookie": "2.2.0",
+    "tunnel-agent": "0.4.1"
+  },
+  "_requested": {
+    "name": "pinkvisual",
+    "raw": "pinkvisual",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "*",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/pinkvisual/-/pinkvisual-0.3.2.tgz",
+  "_shasum": "e80924b5e2fb5ecb599cc52256b83315912a296b",
+  "_shrinkwrap": null,
+  "_spec": "pinkvisual",
+  "_where": "C:\\Users\\Berwyn",
+  "author": {
+    "email": "ruben.cordeiro.eng@gmail.com",
+    "name": "Ruben Fernando Pinto Cordeiro"
+  },
+  "bugs": {
+    "url": "https://github.com/RubenCordeiro/node-pinkvisual/issues"
+  },
+  "dependencies": {
+    "bluebird": "~2.9.30",
+    "lodash": "~3.9.3",
+    "request": "~2.58.0",
+    "urlencode": "~1.0.0"
+  },
+  "description": "A unnoficial node wrapper for the pinkvisual API: (http://api.pinkvisual.com/home/)",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "e80924b5e2fb5ecb599cc52256b83315912a296b",
+    "tarball": "http://registry.npmjs.org/pinkvisual/-/pinkvisual-0.3.2.tgz"
+  },
+  "gitHead": "18c9b011a1606a3480d5741e42977c044bd34158",
+  "homepage": "https://github.com/RubenCordeiro/node-pinkvisual#readme",
+  "installable": true,
+  "keywords": [
+    "pinkvisual",
+    "porn"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "name": "rubencordeiro",
+      "email": "ruben.cordeiro.eng@gmail.com"
+    }
+  ],
+  "name": "pinkvisual",
+  "optionalDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RubenCordeiro/node-pinkvisual.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.3.2"
+}

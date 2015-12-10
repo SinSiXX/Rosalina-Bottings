@@ -1,0 +1,82 @@
+{
+  "_args": [
+    [
+      "gw2api",
+      "C:\\Users\\Berwyn"
+    ]
+  ],
+  "_from": "gw2api@*",
+  "_id": "gw2api@1.2.1",
+  "_inCache": true,
+  "_location": "/gw2api",
+  "_nodeVersion": "0.12.2",
+  "_npmUser": {
+    "email": "npm@the-ln.com",
+    "name": "jrushton"
+  },
+  "_npmVersion": "2.11.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "gw2api",
+    "raw": "gw2api",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "*",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/gw2api/-/gw2api-1.2.1.tgz",
+  "_shasum": "f6808c13ad07ef3d4bc5c410a1dcc5b2112a1d65",
+  "_shrinkwrap": null,
+  "_spec": "gw2api",
+  "_where": "C:\\Users\\Berwyn",
+  "author": {
+    "email": "npm@the-ln.com",
+    "name": "Jason Rushton",
+    "url": "http://jasonrushton.com"
+  },
+  "bugs": {
+    "url": "https://github.com/fooey/node-gw2api/issues"
+  },
+  "dependencies": {
+    "lodash": "^2.4.1",
+    "superagent": "^1.1.0"
+  },
+  "description": "Node wrapper for ArenaNet's GuildWars2 API",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "f6808c13ad07ef3d4bc5c410a1dcc5b2112a1d65",
+    "tarball": "http://registry.npmjs.org/gw2api/-/gw2api-1.2.1.tgz"
+  },
+  "engines": {
+    "node": "*"
+  },
+  "gitHead": "a81c46e17670b93eea24682517e6c6da5f616cdf",
+  "homepage": "https://github.com/fooey/node-gw2api",
+  "installable": true,
+  "keywords": [
+    "Anet",
+    "ArenaNet",
+    "GW2",
+    "Guild Wars 2",
+    "GuildWars2"
+  ],
+  "main": "main",
+  "maintainers": [
+    {
+      "name": "jrushton",
+      "email": "npm@the-ln.com"
+    }
+  ],
+  "name": "gw2api",
+  "optionalDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/fooey/node-gw2api.git"
+  },
+  "scripts": {},
+  "version": "1.2.1"
+}

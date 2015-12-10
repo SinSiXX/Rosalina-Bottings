@@ -1,0 +1,29 @@
+var config = [
+{"firstName":"John", "lastName":"Doe"},
+{"firstName":"Anna", "lastName":"Smith"},
+{"firstName":"Peter","lastName": "Jones"}
+];
+
+var userBlackList = [
+{"firstName":"John", "lastName":"Doe"},
+{"firstName":"Anna", "lastName":"Smith"},
+{"firstName":"Peter","lastName": "Jones"}
+];
+
+var userWhiteList = [
+{"firstName":"John", "lastName":"Doe"},
+{"firstName":"Anna", "lastName":"Smith"},
+{"firstName":"Peter","lastName": "Jones"}
+];
+
+var identifiedBots  = [
+{"firstName":"John", "lastName":"Doe"},
+{"firstName":"Anna", "lastName":"Smith"},
+{"firstName":"Peter","lastName": "Jones"}
+];
+
+var imgScramble  = [
+{"firstName":"John", "lastName":"Doe"},
+{"firstName":"Anna", "lastName":"Smith"},
+{"firstName":"Peter","lastName": "Jones"}
+];

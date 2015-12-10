@@ -1,0 +1,25 @@
+{
+  "name": "gw2reset",
+  "version": "1.0.0",
+  "authors": [
+    "uselesscode <i-stare@uselesscode.org>"
+  ],
+  "description": "Calculates Guild Wars 2 daily/WvW/guild reset times.",
+  "keywords": [
+    "gw2",
+    "Guild Wars 2"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "node_modules",
+    "bower_components",
+    "junk"
+  ],
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/uselesscode/gw2reset.git"
+  },
+  "devDependencies": {
+    "qunit": "~1.16.0"
+  }
+}

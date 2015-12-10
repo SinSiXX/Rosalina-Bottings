@@ -1,0 +1,82 @@
+{
+  "_args": [
+    [
+      "cleverbot.io",
+      "C:\\Users\\Berwyn"
+    ]
+  ],
+  "_from": "cleverbot.io@*",
+  "_id": "cleverbot.io@1.0.4",
+  "_inCache": true,
+  "_location": "/cleverbot.io",
+  "_npmUser": {
+    "email": "david@tesler.com",
+    "name": "dtesler"
+  },
+  "_npmVersion": "1.4.14",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "cleverbot.io",
+    "raw": "cleverbot.io",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "*",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cleverbot.io/-/cleverbot.io-1.0.4.tgz",
+  "_shasum": "8064862cb1f09bf7977d13b4b67b0b90e82f40af",
+  "_shrinkwrap": null,
+  "_spec": "cleverbot.io",
+  "_where": "C:\\Users\\Berwyn",
+  "author": {
+    "name": "David Tesler"
+  },
+  "bugs": {
+    "url": "https://github.com/cleverbotIO/node-cleverbot.io/issues"
+  },
+  "dependencies": {
+    "request": "^2.53.0"
+  },
+  "description": "A node.js client for cleverbot.io",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "8064862cb1f09bf7977d13b4b67b0b90e82f40af",
+    "tarball": "http://registry.npmjs.org/cleverbot.io/-/cleverbot.io-1.0.4.tgz"
+  },
+  "gitHead": "857c90ca6a87baa491ac2ee70b3deee2ec2d53ed",
+  "homepage": "https://github.com/cleverbotIO/node-cleverbot.io",
+  "installable": true,
+  "keywords": [
+    "api",
+    "based",
+    "cleverbot",
+    "cloud",
+    "developers",
+    "official",
+    "open",
+    "source",
+    "track"
+  ],
+  "license": "MIT",
+  "main": "app.js",
+  "maintainers": [
+    {
+      "name": "dtesler",
+      "email": "david@tesler.com"
+    }
+  ],
+  "name": "cleverbot.io",
+  "optionalDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cleverbotIO/node-cleverbot.io"
+  },
+  "scripts": {
+    "test": "node .t"
+  },
+  "version": "1.0.4"
+}

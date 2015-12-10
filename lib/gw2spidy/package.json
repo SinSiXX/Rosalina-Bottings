@@ -1,0 +1,85 @@
+{
+  "_args": [
+    [
+      "gw2spidy",
+      "C:\\Users\\Berwyn"
+    ]
+  ],
+  "_from": "gw2spidy@*",
+  "_id": "gw2spidy@0.3.0",
+  "_inCache": true,
+  "_location": "/gw2spidy",
+  "_nodeVersion": "0.10.33",
+  "_npmUser": {
+    "email": "james.sumners@gmail.com",
+    "name": "jsumners"
+  },
+  "_npmVersion": "2.1.7",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "gw2spidy",
+    "raw": "gw2spidy",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "*",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/gw2spidy/-/gw2spidy-0.3.0.tgz",
+  "_shasum": "f3d76cca5022e8d1a51f45b337428a7457fed4a8",
+  "_shrinkwrap": null,
+  "_spec": "gw2spidy",
+  "_where": "C:\\Users\\Berwyn",
+  "author": {
+    "name": "James Sumners"
+  },
+  "bugs": {
+    "url": "https://github.com/jsumners/node-gw2spidy/issues"
+  },
+  "dependencies": {
+    "electrolyte": "0.0.6"
+  },
+  "description": "A node module for interfacing with the GW2 Spidy API",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-github-pages": "0.0.4",
+    "grunt-shell": "^1.1.1",
+    "jsdoc": "^3.3.0-alpha10",
+    "load-grunt-tasks": "^1.0.0",
+    "vows": "^0.8.0"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "f3d76cca5022e8d1a51f45b337428a7457fed4a8",
+    "tarball": "http://registry.npmjs.org/gw2spidy/-/gw2spidy-0.3.0.tgz"
+  },
+  "gitHead": "a2d150d35050b1bcfc440ab2a8d2ec73dada7b36",
+  "homepage": "https://github.com/jsumners/node-gw2spidy",
+  "installable": true,
+  "keywords": [
+    "guild",
+    "guild wars",
+    "gw2",
+    "wars"
+  ],
+  "license": "MIT",
+  "main": "gw2spidy.js",
+  "maintainers": [
+    {
+      "name": "jsumners",
+      "email": "james.sumners@gmail.com"
+    }
+  ],
+  "name": "gw2spidy",
+  "optionalDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jsumners/node-gw2spidy.git"
+  },
+  "scripts": {
+    "test": "grunt shell:test"
+  },
+  "version": "0.3.0"
+}
