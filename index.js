@@ -20,7 +20,7 @@ bot.login(config.email, config.password, function(error, token) {
 });
 
 bot.on('ready', function onReady() {
-    //readUserWhitelist();
+    readUserWhitelist();
     console.log('Username: ' + bot.user.username);
     console.log('ID: ' + bot.user.id);
     console.log('Servers: ' + bot.servers.length);
@@ -46,37 +46,39 @@ function base64_encode(file) {
     return new Buffer(bitmap).toString('base64');
 }
 
+//{"436346":{"username":"Lord Ptolemy","whitelisted":true}}
 
-//var userWhitelist = []; //json object containing keys for whitelisted user IDs
-/*
+var userWhitelist; //json object containing keys for whitelisted user IDs
+
 function readUserWhitelist() {
     fs.readFile('./config/whitelist.json', 'utf8', function (err, data) {
         if (err) {
+            console.error('Problem with whitelist. Is it populated?');
             console.error(err);
+            return;
         }
         console.log(JSON.parse(data));
         return userWhitelist = JSON.parse(data);
     });
 }
 
-function addUserWhitelist(usersID) {
-    //userWhitelist.usersID = '1';
-    //{"102529479179509760":[{"username":"Lord Ptolemy","whitelisted":1}]}
+function addUserWhitelist(usersID, userName) {
+    //userWhitelist.usersID.whitelist = '1';
     console.log('String?: ' + usersID.isString);
-    userWhitelist = JSON.stringify({"userID":usersID,"username":"Lord Ptolemy","whitelisted":1});
-
-
+    userWhitelist.userinfo.push(
+        {usersID: {"username":userName, "whitelisted":true}}
+    );
 
     fs.writeFile('./config/whitelist.json',  userWhitelist, 'utf8', function (error) {
         if (error) {
             console.log('ERROR ADDING TO WHITELIST!');
         }
-        //readUserWhitelist();
+        readUserWhitelist();
     });
 }
 
 
-
+/*
 function inUserWhitelist(usersID) {
     if(userWhitelist.hasOwnProperty('usersID')){
         return 1;
@@ -89,38 +91,36 @@ function inUserWhitelist(usersID) {
 var channelWhitelist = ['111075786936623104', '114957491716096003', '114957522636374017', '102588320181125120', '112150043858837504', '112150135697358848', '112150249539158016', '112150012649078784', '115593364522401793'];
 var array_userWhitelist = ['102529479179509760'];
 
-
-
-
-
 bot.on("message", function(message) {
 
     var prefix = config.prefix;
     var mSplit = message.content.split(" ");
-    var bot_permissions = message.channel.permissionsOf(bot.user.id);
-    var bot_can_invite = bot_permissions.hasPermission("createInstantInvite");
-    var bot_can_kick = bot_permissions.hasPermission("kickMembers");
-    var bot_can_ban = bot_permissions.hasPermission("banMembers");
-    var bot_can_manage_roles = bot_permissions.hasPermission("manageRoles");
-    var bot_can_manage_permissions = bot_permissions.hasPermission("managePermissions");
-    var bot_can_manage_channels = bot_permissions.hasPermission("manageChannels");
-    var bot_can_manage_channel = bot_permissions.hasPermission("manageChannel");
-    var bot_can_manage_server = bot_permissions.hasPermission("manageServer");
-    var bot_can_read = bot_permissions.hasPermission("readMessages");
-    var bot_can_send = bot_permissions.hasPermission("sendMessages");
-    var bot_can_send_tts = bot_permissions.hasPermission("sendTTSMessages");
-    var bot_can_manage_messages = bot_permissions.hasPermission("manageMessages");
-    var bot_can_embed = bot_permissions.hasPermission("embedLinks");
-    var bot_can_attach = bot_permissions.hasPermission("attachFiles");
-    var bot_can_read_history = bot_permissions.hasPermission("readMessageHistory");
-    var bot_can_mention_everyone = bot_permissions.hasPermission("mentionEveryone");
-    var bot_can_voice_connect = bot_permissions.hasPermission("voiceConnect");
-    var bot_can_voice_speak = bot_permissions.hasPermission("voiceSpeak");
-    var bot_can_voice_mute = bot_permissions.hasPermission("voiceMuteMembers");
-    var bot_can_voice_deafen = bot_permissions.hasPermission("voiceDeafenMembers");
-    var bot_can_voice_move = bot_permissions.hasPermission("voiceMoveMembers");
-    var bot_can_voice_use_vad = bot_permissions.hasPermission("voiceUseVAD");
 
+    if (!message.channel.isPrivate) {
+        var bot_permissions = message.channel.permissionsOf(bot.user.id);
+        var bot_can_invite = bot_permissions.hasPermission("createInstantInvite");
+        var bot_can_kick = bot_permissions.hasPermission("kickMembers");
+        var bot_can_ban = bot_permissions.hasPermission("banMembers");
+        var bot_can_manage_roles = bot_permissions.hasPermission("manageRoles");
+        var bot_can_manage_permissions = bot_permissions.hasPermission("managePermissions");
+        var bot_can_manage_channels = bot_permissions.hasPermission("manageChannels");
+        var bot_can_manage_channel = bot_permissions.hasPermission("manageChannel");
+        var bot_can_manage_server = bot_permissions.hasPermission("manageServer");
+        var bot_can_read = bot_permissions.hasPermission("readMessages");
+        var bot_can_send = bot_permissions.hasPermission("sendMessages");
+        var bot_can_send_tts = bot_permissions.hasPermission("sendTTSMessages");
+        var bot_can_manage_messages = bot_permissions.hasPermission("manageMessages");
+        var bot_can_embed = bot_permissions.hasPermission("embedLinks");
+        var bot_can_attach = bot_permissions.hasPermission("attachFiles");
+        var bot_can_read_history = bot_permissions.hasPermission("readMessageHistory");
+        var bot_can_mention_everyone = bot_permissions.hasPermission("mentionEveryone");
+        var bot_can_voice_connect = bot_permissions.hasPermission("voiceConnect");
+        var bot_can_voice_speak = bot_permissions.hasPermission("voiceSpeak");
+        var bot_can_voice_mute = bot_permissions.hasPermission("voiceMuteMembers");
+        var bot_can_voice_deafen = bot_permissions.hasPermission("voiceDeafenMembers");
+        var bot_can_voice_move = bot_permissions.hasPermission("voiceMoveMembers");
+        var bot_can_voice_use_vad = bot_permissions.hasPermission("voiceUseVAD");
+    }
 /*
     var mSplit = message.content.split(" ");
 
@@ -130,15 +130,19 @@ bot.on("message", function(message) {
         }
     }
     */
-/*
+
     if (mSplit[0] === prefix) {
         if (mSplit[1] === '!add') {
-            addUserWhitelist(cleanID(mSplit[2]));
+            //addUserWhitelist(cleanID(mSplit[2]), mSplit[2]);
+            userWhitelist.userinfo.push(
+                {usersID: {"username":userName, "whitelisted":true}}
+            );
             console.log(userWhitelist);
             bot.reply(message, 'Added :thumbsup:');
+            bot.reply(message, userWhitelist);
         }
     }
-*/
+
     if (message.channel.isPrivate) {
         if (message.author.id !== bot.user.id) {
             bot.joinServer(mSplit[0]);
@@ -209,7 +213,8 @@ bot.on("message", function(message) {
                     }
                 });
             }
-            if (mSplit[1] === 'setgame2') {
+
+            if (mSplit[1] === 'setgame') {
                 console.log('failed');
                 bot.setPlayingGame(mSplit[2], function(error) {
                     if(error) {
