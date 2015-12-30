@@ -1,0 +1,31 @@
+{
+  "name": "rosalina-bottings",
+  "version": "0.2.0",
+  "description": "Discord chat bot written in node.js",
+  "main": "Rosalina Bottings/index.js",
+  "dependencies": {
+    "discord.js": "^5.3.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/actowolfy/Rosalina-Bottings.git"
+  },
+  "keywords": [
+    "rosalina",
+    "bottings",
+    "actowolfy",
+    "discord",
+    "bot",
+    "discord.js",
+    "lord",
+    "ptolemy",
+    "lord ptolemy"
+  ],
+  "author": "actowolfy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/actowolfy/Rosalina-Bottings/issues"
+  },
+  "homepage": "https://github.com/actowolfy/Rosalina-Bottings#readme"
+}
