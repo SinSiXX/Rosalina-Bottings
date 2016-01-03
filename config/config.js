@@ -2,5 +2,5 @@ module.exports = {
     'email':'',
     'username':'',
     'password':'',
-    'prefix':'!rosa'
+    'prefix':'<@111424758314213376>'
 };
