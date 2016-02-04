@@ -1,0 +1,102 @@
+{
+  "detections": [
+    {
+      "name":"Cracks",
+      "severity":5,
+      "os":["Linux", "Mac OSX", "Windows XP", "Windows Vista", "Windows 7", "Windows 8", "Windows 8.1", "Windows 10"],
+      "conflicts":["MapWriter Config Error","Insufficient Memory","Java 32bit on 64bit","Java Options","Stencil Buffer Error","Pixel Format","Pixel Format W10"],
+      "architecture":null,
+      "cheat":true,
+      "modpack":null,
+      "description":"User has cracked their launcher resulting in illegal use of it.",
+      "solution":"Buy the game.",
+      "matches":["[java.lang.Throwable$WrappedPrintStream:println:-1]: java.lang.NoSuchMethodError: com.google.common.io.CharSource.readLines(Lcom/google/common/io/LineProcessor;)Ljava/lang/Object;"]
+    },
+    {
+      "name":"Pixel Format W10",
+      "severity":4,
+      "os":["windows 10"],
+      "conflicts":["Pixel Format"],
+      "architecture":null,
+      "cheat":false,
+      "modpack":null,
+      "description":"Occurs when user does not have drivers that're compatible with Windows 10.",
+      "solution":"\nYou appear to be having an issue with an unsupported Intel Graphics device and Windows 10. This issue is common for older computers and Windows 10. We recommend, if it's a desktop, to get a dedicated graphics, as it is always a better option, anyways. However, there is a fix.\n\nPlease press ``WindowsKey + X`` and click on \"Programs and Features\" and uninstall all copies of Java. \nAfter that, install Java 7 from this link: http://cdn.lemonmc.com/jre-7u80-windows-x64.exe \n\nStart up the launcher and try again.",
+      "matches":["org.lwjgl.LWJGLException: Pixel format not accelerated","OS: Windows 10"]
+    },
+    {
+      "name":"Pixel Format",
+      "severity":4,
+      "os":["Linux", "Mac OSX", "Windows XP", "Windows Vista", "Windows 7", "Windows 8", "Windows 8.1"],
+      "conflicts":["Pixel Format W10"],
+      "architecture":null,
+      "cheat":false,
+      "modpack":null,
+      "description":"Occurs when drivers are outdated.",
+      "solution":"\nIt seems your gpu drivers are out of date. Please go to your manufacturer's website to find the up to date drivers for your computer.\nIntel: https://downloadmirror.intel.com/24345/a08/Intel%20Driver%20Update%20Utility%20Installer.exe\nAMD/ATI: http://www2.ati.com/drivers/auto/autodetectutility.exe\nNvidia: http://www.nvidia.com/Download/Scan.aspx?lang=en-us",
+      "matches":["org.lwjgl.LWJGLException: Pixel format not accelerated"]
+    },
+    {
+      "name":"Stencil Buffer Error",
+      "severity":4,
+      "os":["Linux", "Mac OSX", "Windows XP", "Windows Vista", "Windows 7", "Windows 8", "Windows 8.1", "Windows 10"],
+      "conflicts":[],
+      "architecture":null,
+      "cheat":false,
+      "modpack":null,
+      "description":"Stencil buffering doesn't work well with graphics card/it's drivers.",
+      "solution":"\nYour graphics card seems to be having issues with Stencil Buffering.\nPlease goto the **launcher Options**_(top right)_\nThen click on the tab called \"Video Settings\"\nThen disable the option called \"Stencil Buffer\"",
+      "matches":["########## GL ERROR ##########","Post render","1286: Invalid framebuffer operation"]
+    },
+    {
+      "name":"Java Options",
+      "severity":3,
+      "os":["Linux", "Mac OSX", "Windows XP", "Windows Vista", "Windows 7", "Windows 8", "Windows 8.1", "Windows 10"],
+      "conflicts":[],
+      "architecture":null,
+      "cheat":false,
+      "modpack":null,
+      "description":"Java options that overwrite Technic's variables resulting in conflicts.",
+      "solution":"\nPlease download this file, then RightClick->Run as Administrator.\nThis should clear Java Settings that are being stored in your OS, which interfere with Technic.\nThis script was written by the Moderator Khio, and can be trusted.\nhttp://iamtrue.net/clearJavaEnvVars.bat\n\n**Contents of file:**```bat\n::kill any currently running java processes\ntaskkill /f /im javaw.exe\n::override user set java variables messing with launcher\n::Clears the system variable _JAVA_OPTIONS\nsetx _JAVA_OPTIONS \"\" /m\n::Clears the local variable _JAVA_OPTIONS\nsetx _JAVA_OPTIONS \"\"\n::To let you know if it failed or was successful. Just press esc or enter.\npause```",
+      "matches":["_JAVA_OPTIONS"]
+    },
+    {
+      "name":"Java 32bit on 64bit",
+      "severity":3,
+      "os":["Linux", "Mac OSX", "Windows XP", "Windows Vista", "Windows 7", "Windows 8", "Windows 8.1", "Windows 10"],
+      "conflicts":["Insufficient Memory"],
+      "architecture":"64",
+      "cheat":false,
+      "modpack":null,
+      "description":"",
+      "solution":"\nIn order to update to Java 64-Bit, please go to the link below and download the version for your computer.\nIf using Windows, please use the version Windows Offline (64-Bit).\nhttp://java.com/en/download/manual.jsp\nYou may need to restart your computer after(99% of the time you won't).\nAlso make sure you've got 64-bit java selected & 2gb(minimum) or 4gb(max) of ram allocated in **launcher Options**_(top right)_ --> \"Java Settings\".",
+      "matches":["C:\\Program Files (x86)\\Java\\"]
+    },
+    {
+      "name":"Insufficient Memory",
+      "severity":4,
+      "os":["Linux", "Mac OSX", "Windows XP", "Windows Vista", "Windows 7", "Windows 8", "Windows 8.1", "Windows 10"],
+      "conflicts":["Java 32bit on 64bit"],
+      "architecture":null,
+      "cheat":false,
+      "modpack":null,
+      "description":"More ram is allocated than available.",
+      "solution":"\nYou're allocating more ram than you have available. Please decrease ram allocation in launcher options or close programs.\n",
+      "matches":["Error occurred during initialization of VM","Could not reserve enough space for object heap","insufficient memory for the Java"]
+    },
+    {
+      "name":"MapWriter Config Error",
+      "severity":4,
+      "os":["Linux", "Mac OSX", "Windows XP", "Windows Vista", "Windows 7", "Windows 8", "Windows 8.1", "Windows 10"],
+      "conflicts":[],
+      "architecture":null,
+      "cheat":false,
+      "modpack":true,
+      "description":"MapWriter corrupted it's config...again.",
+      "solution":"\nIt seems MapWriter has screwed up once again. Please delete the modpack by clicking on the modpack in the launcher.\nThen press **delete** in the bottom right corner. Then redownload a fresh copy of the modpack. This will get rid of your world(s).\n\nOtherwise wait for someone to give you instructions on where to find the offending file(s) to delete.",
+      "matches":["Caught exception from MapWriter","java.lang.RuntimeException: Unknown character","MapWriter.cfg"]
+    }
+
+
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "servers": {
+    "serverID1": {
+
+
+      "datejoined":"01/18/2016",
+
+
+      "owner:":"3523532235",
+
+
+      "roles": {
+        "roleid":{
+          "denied":false,
+          "moderator":false,
+          "admin":true
+        },
+
+        "57547545474":{
+          "denied":false,
+          "moderator":true,
+          "admin":false
+        }
+      },
+
+
+      "channels":{
+        "channelid":{
+          "whitelisted":true,
+          "history":true,
+          "logging":false
+        },
+
+        "55555555":{
+          "whitelisted":false,
+          "history":true,
+          "logging":false
+        },
+
+        "33333333333":{
+          "whitelisted":false,
+          "history":true,
+          "logging":false
+        }
+      },
+
+
+      "members":{
+        "userid":{
+          "joined":"date joined",
+          "usernames":["current","previous","previous previous","etc..."],
+          "discriminator":"user discrimator",
+          "avatarurl":"url to avatar",
+          "detections":0,
+          "warnings":2,
+          "banned":false,
+          "override":true,
+          "denied":false
+        },
+
+        "467667667644":{
+          "joined":"01/18/2016",
+          "usernames":["steve","haxor","NEWB","etc..."],
+          "avatarurl":"346346346gdfhfd.com",
+          "detections":1,
+          "warnings":2,
+          "banned":false,
+          "override":false,
+          "denied":true
+        },
+
+        "9999999432":{
+          "joined":"01/18/2016",
+          "usernames":["I'm a troll","death to all","jump off a cliff","etc..."],
+          "avatarurl":"cliff.com",
+          "detections":3,
+          "warnings":2,
+          "banned":true,
+          "override":false,
+          "denied":false
+        }
+      },
+
+
+      "logs":{
+        "datehere":[
+          {
+            "messageid":"5856856",
+            "userid":"6856856568",
+            "username":"Ptolemy",
+            "channel":"testing",
+            "channelid":"463463",
+            "content":"This is a test."
+          },
+
+          {
+            "messageid":"2355325",
+            "userid":"11111111",
+            "username":"John Doe",
+            "channel":"general",
+            "channelid":"57547547",
+            "content":"Gimmie da candy."
+          }
+        ]
+      }
+
+    }
+  }
+}
